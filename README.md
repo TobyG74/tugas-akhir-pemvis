@@ -40,9 +40,7 @@ private final String menuItems[][] = {
     };
 ```
 
-# Konfigurasi Icon Pada Folder menu/icon
-
-[Icon](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/menu/icon)
+# Konfigurasi Icon Pada Folder [Icon](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/menu/icon)
 
 # Pembuatan Form Pada Folder [Form](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/application/form)
 
