@@ -140,8 +140,28 @@
       </SubComponents>
     </Container>
     <Component class="com.tugas.swing.card.Card" name="card1">
+      <Properties>
+        <Property name="color1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="color2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="99" red="ff" type="rgb"/>
+        </Property>
+        <Property name="description" type="java.lang.String" value="Total Barang"/>
+        <Property name="icon" type="com.tugas.utils.iconfont.GoogleMaterialDesignIcon" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="SHOP_TWO"/>
+        </Property>
+        <Property name="values" type="java.lang.String" value="0"/>
+      </Properties>
     </Component>
     <Component class="com.tugas.swing.card.Card" name="card3">
+      <Properties>
+        <Property name="description" type="java.lang.String" value="Total Pengguna"/>
+        <Property name="icon" type="com.tugas.utils.iconfont.GoogleMaterialDesignIcon" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="PEOPLE"/>
+        </Property>
+        <Property name="values" type="java.lang.String" value="0"/>
+      </Properties>
     </Component>
     <Component class="com.tugas.swing.card.Card" name="card2">
       <Properties>
@@ -151,9 +171,11 @@
         <Property name="color2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="aa" green="a6" red="1a" type="rgb"/>
         </Property>
+        <Property name="description" type="java.lang.String" value="Pendapatan Bulanan"/>
         <Property name="icon" type="com.tugas.utils.iconfont.GoogleMaterialDesignIcon" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="PIE_CHART"/>
         </Property>
+        <Property name="values" type="java.lang.String" value="Rp100.000"/>
       </Properties>
     </Component>
   </SubComponents>

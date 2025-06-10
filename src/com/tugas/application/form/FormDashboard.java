@@ -7,7 +7,6 @@ import com.tugas.toast.Notifications;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -66,9 +65,31 @@ public class FormDashboard extends javax.swing.JPanel {
         table.getTableHeader().putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
         table.putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
         roundPanel1.putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
+        
+        card1.setValues(totalBarang());
+        card1.setDescription("Total Barang");
+        
+        card2.setValues("Rp100.000");
+        card3.setDescription("Total Penjualan");
+        
+        card3.setValues(totalUser());
+        card3.setDescription("Total Pengguna");
     }
     
-    private String totalUsers() {
+    private String totalBarang() {
+        String sql = "select count(*) from barang";
+        try (Connection conn = Connector.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getString(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "0";
+    }
+    
+    private String totalUser() {
         String sql = "select count(*) from users";
         try (Connection conn = Connector.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -134,9 +155,21 @@ public class FormDashboard extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        card1.setColor1(new java.awt.Color(255, 255, 0));
+        card1.setColor2(new java.awt.Color(255, 153, 0));
+        card1.setDescription("Total Barang");
+        card1.setIcon(com.tugas.utils.iconfont.GoogleMaterialDesignIcon.SHOP_TWO);
+        card1.setValues("0");
+
+        card3.setDescription("Total Pengguna");
+        card3.setIcon(com.tugas.utils.iconfont.GoogleMaterialDesignIcon.PEOPLE);
+        card3.setValues("0");
+
         card2.setColor1(new java.awt.Color(95, 211, 226));
         card2.setColor2(new java.awt.Color(26, 166, 170));
+        card2.setDescription("Pendapatan Bulanan");
         card2.setIcon(com.tugas.utils.iconfont.GoogleMaterialDesignIcon.PIE_CHART);
+        card2.setValues("Rp100.000");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

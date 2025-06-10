@@ -16,9 +16,11 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import com.tugas.application.Application;
+import com.tugas.application.form.FormCategory;
 import com.tugas.application.form.FormDashboard;
 import com.tugas.application.form.FormItems;
-import com.tugas.application.form.FormRead;
+import com.tugas.application.form.FormWarehouse;
+import com.tugas.manager.RoleManager;
 import com.tugas.menu.Menu;
 import com.tugas.menu.MenuAction;
 
@@ -70,12 +72,63 @@ public class MainForm extends JLayeredPane {
     private void initMenuEvent() {
         menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
-            if (index == 0 && subIndex == 0) {
-                    Application.showForm(new FormDashboard());
-            } else if (index == 1 && subIndex == 0) {
-                    Application.showForm(new FormItems());
-            } else if (index == 12 && subIndex == 0) {
-                    Application.logout();
+            switch (RoleManager.getRoleFromFile()) {
+                case "Admin": {
+                    if (index == 0 && subIndex == 0) {
+                        Application.showForm(new FormDashboard());
+                    } else if (index == 1 && subIndex == 0) {
+                        Application.showForm(new FormItems());
+                    } else if (index == 2 && subIndex == 0) {
+                        Application.showForm(new FormCategory());
+                    } else if (index == 3 && subIndex == 0) {
+//                        Application.showForm(new FormCategory());
+                    } else if (index == 4 && subIndex == 0) {
+//                        Application.showForm(new FormCategory());
+                    } else if (index == 5 && subIndex == 0) {
+                        Application.showForm(new FormWarehouse());
+                    } else if (index == 6 && subIndex == 0) {
+//                        Application.showForm(new FormCategory());
+                    } else if (index == 7 && subIndex == 0) {
+//                        Application.showForm(new FormCategory());
+                    } else if (index == 9 && subIndex == 0) {
+//                        Application.showForm(new FormCategory());
+                    } else if (index == 10 && subIndex == 0) {
+//                        Application.showForm(new FormCategory());
+                    } else if (index == 11 && subIndex == 0) {
+//                        Application.showForm(new FormCategory());
+                    } else if (index == 12 && subIndex == 0) {
+                        Application.logout();
+                    }
+                    break;
+                }
+                case "KepalaGudang": {
+                    if (index == 0 && subIndex == 0) {
+                        Application.showForm(new FormDashboard());
+                    } else if (index == 1 && subIndex == 0) {
+                        Application.showForm(new FormItems());
+                    } else if (index == 2 && subIndex == 0) {
+                        Application.showForm(new FormCategory());
+                    } else if (index == 5 && subIndex == 0) {
+                        Application.showForm(new FormWarehouse());
+                    } else if (index == 12 && subIndex == 0) {
+                        Application.logout();
+                    }
+                    break;
+                }
+                case "Manager": {
+                    if (index == 0 && subIndex == 0) {
+                        Application.showForm(new FormDashboard());
+                    } else if (index == 1 && subIndex == 0) {
+                        Application.showForm(new FormItems());
+                    } else if (index == 2 && subIndex == 0) {
+                        Application.showForm(new FormCategory());
+                    } else if (index == 5 && subIndex == 0) {
+                        Application.showForm(new FormWarehouse());
+                    } else if (index == 12 && subIndex == 0) {
+                        Application.logout();
+                    }
+                    break;
+                }
             }
         });
     }
