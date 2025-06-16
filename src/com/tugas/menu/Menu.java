@@ -2,8 +2,10 @@ package com.tugas.menu;
 
 import com.tugas.menu.mode.LightDarkMode;
 import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatUIUtils;
 import com.formdev.flatlaf.util.UIScale;
+import com.tugas.manager.RoleManager;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -11,7 +13,6 @@ import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -53,9 +54,14 @@ public class Menu extends JPanel {
         if (menuFull) {
             header.setText(headerName);
             header.setHorizontalAlignment(getComponentOrientation().isLeftToRight() ? JLabel.LEFT : JLabel.RIGHT);
+            role.setText(roleName);
+            role.setHorizontalAlignment(getComponentOrientation().isLeftToRight() ? JLabel.LEFT : JLabel.RIGHT);
+            role.setIcon(new FlatSVGIcon("com/tugas/icon/svg/role_key.svg", 0.10f));
         } else {
             header.setText("");
             header.setHorizontalAlignment(JLabel.CENTER);
+            role.setText("");
+            role.setIcon(null);
         }
         for (Component com : panelMenu.getComponents()) {
             if (com instanceof MenuItem) {
@@ -68,7 +74,8 @@ public class Menu extends JPanel {
 
     private final List<MenuEvent> events = new ArrayList<>();
     private boolean menuFull = true;
-    private final String headerName = "DASHBOARD";
+    private String headerName = "";
+    private String roleName = "";
 
     protected final boolean hideMenuTitleOnMinimum = true;
     protected final int menuTitleLeftInset = 5;
@@ -82,17 +89,29 @@ public class Menu extends JPanel {
     }
 
     private void init() {
+        headerName = RoleManager.getFullnameFromFile();
+        roleName = RoleManager.getRoleFromFile();
+        
         setLayout(new MenuLayout());
         putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:20,2,2,2;"
                 + "background:$Menu.background;"
                 + "arc:10");
         header = new JLabel(headerName);
-        header.setIcon(new ImageIcon(getClass().getResource("/com/tugas/icon/png/logo.png")));
+        header.setIcon(new FlatSVGIcon("com/tugas/icon/svg/user.svg", 0.10f));
+        header.setIconTextGap(15);
         header.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$Menu.header.font;"
                 + "foreground:$Menu.foreground");
 
+        role = new JLabel(roleName);
+        role.setIcon(new FlatSVGIcon("com/tugas/icon/svg/role_key.svg", 0.10f));
+        role.setIconTextGap(15);
+        role.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$Menu.role.font;"
+                + "foreground:$Menu.foreground");
+
+        
         //  Menu
         scroll = new JScrollPane();
         panelMenu = new JPanel(new MenuItemLayout(this));
@@ -116,6 +135,7 @@ public class Menu extends JPanel {
         toolBarAccentColor = new ToolBarAccentColor(this);
         toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
         add(header);
+        add(role);
         add(scroll);
         add(lightDarkMode);
         add(toolBarAccentColor);
@@ -206,6 +226,7 @@ public class Menu extends JPanel {
     }
 
     private JLabel header;
+    private JLabel role;
     private JScrollPane scroll;
     private JPanel panelMenu;
     private LightDarkMode lightDarkMode;
@@ -246,14 +267,17 @@ public class Menu extends JPanel {
                 int width = parent.getWidth() - (insets.left + insets.right);
                 int height = parent.getHeight() - (insets.top + insets.bottom);
                 int iconWidth = width;
-                int iconHeight = header.getPreferredSize().height;
+                int headerHeight = header.getPreferredSize().height;
+                int roleHeight = role.getPreferredSize().height;
+                int headerTotalHeight = headerHeight + roleHeight + gap;
                 int hgap = menuFull ? sheaderFullHgap : 0;
                 int accentColorHeight = 0;
                 if (toolBarAccentColor.isVisible()) {
                     accentColorHeight = toolBarAccentColor.getPreferredSize().height+gap;
                 }
 
-                header.setBounds(x + hgap, y, iconWidth - (hgap * 2), iconHeight);
+                header.setBounds(x + hgap, y, iconWidth - (hgap * 2), headerHeight);
+                role.setBounds(x + hgap, y + headerHeight, iconWidth - (hgap * 2), roleHeight);
                 int ldgap = UIScale.scale(10);
                 int ldWidth = width - ldgap * 2;
                 int ldHeight = lightDarkMode.getPreferredSize().height;
@@ -261,9 +285,9 @@ public class Menu extends JPanel {
                 int ldy = y + height - ldHeight - ldgap  - accentColorHeight;
 
                 int menux = x;
-                int menuy = y + iconHeight + gap;
+                int menuy = y + headerTotalHeight + gap;
+                int menuHeight = height - (headerTotalHeight + gap) - (ldHeight + ldgap * 2) - (accentColorHeight);
                 int menuWidth = width;
-                int menuHeight = height - (iconHeight + gap) - (ldHeight + ldgap * 2) - (accentColorHeight);
                 scroll.setBounds(menux, menuy, menuWidth, menuHeight);
 
                 lightDarkMode.setBounds(ldx, ldy, ldWidth, ldHeight);

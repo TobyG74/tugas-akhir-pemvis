@@ -45,13 +45,14 @@ public class FormItems extends javax.swing.JPanel {
             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Object[] row = new Object[]{
-                    rs.getString("kode_barang"),
+                    rs.getString("id_barang"),
                     rs.getString("nama_barang"),
                     rs.getString("id_kategori"),
                     rs.getString("harga_beli"),
                     rs.getString("harga_jual"),
                     rs.getString("stok"),
-                    rs.getString("satuan")
+                    rs.getString("satuan"),
+                    rs.getString("added_by")
                 };
                 tableModel.addRow(row);
             }
@@ -74,7 +75,7 @@ public class FormItems extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        inputKodeBarang = new javax.swing.JTextField();
+        inputIdBarang = new javax.swing.JTextField();
         inputNamaBarang = new javax.swing.JTextField();
         inputIdKategoriBarang = new javax.swing.JTextField();
         inputNamaKategoriBarang = new javax.swing.JTextField();
@@ -129,7 +130,7 @@ public class FormItems extends javax.swing.JPanel {
 
         roundPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setText("Kode Barang");
+        jLabel2.setText("ID Barang");
 
         jLabel3.setText("Nama Barang");
 
@@ -186,7 +187,7 @@ public class FormItems extends javax.swing.JPanel {
                         .addComponent(inputHargaJualBarang)
                         .addComponent(inputHargaBeliBarang, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputNamaKategoriBarang, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputKodeBarang, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(inputIdBarang, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputNamaBarang, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundPanel2Layout.createSequentialGroup()
                             .addComponent(inputIdKategoriBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,7 +202,7 @@ public class FormItems extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(inputKodeBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputIdBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -241,9 +242,9 @@ public class FormItems extends javax.swing.JPanel {
 
         jLabel11.setText("1. Klik \"Simpan\" Untuk Menyimpan Data Barang");
 
-        jLabel12.setText("2. Klik \"Edit\" Untuk Mengubah Data Barang");
+        jLabel12.setText("2. Klik \"Ubah\" Untuk Mengubah Data Barang");
 
-        jLabel13.setText("3. Klik \"Delete\" Untuk Menghapus Data Barang");
+        jLabel13.setText("3. Klik \"Hapus\" Untuk Menghapus Data Barang");
 
         jLabel14.setText("4. Klik \"Ulang\" Untuk Mengulang Input Data Barang");
 
@@ -284,7 +285,7 @@ public class FormItems extends javax.swing.JPanel {
             }
         });
 
-        editButton.setText("Edit");
+        editButton.setText("Ubah");
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
@@ -312,23 +313,23 @@ public class FormItems extends javax.swing.JPanel {
             }
         });
 
-        jLabel15.setText("Kode");
+        jLabel15.setText("ID");
 
         roundPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode", "Nama Barang", "ID Kategori", "Harga Beli", "Harga Jual", "Stok", "Satuan"
+                "ID", "Nama Barang", "ID Kategori", "Harga Beli", "Harga Jual", "Stok", "Satuan", "Ditambahkan Oleh"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -344,6 +345,8 @@ public class FormItems extends javax.swing.JPanel {
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(0).setPreferredWidth(10);
             table.getColumnModel().getColumn(2).setPreferredWidth(10);
+            table.getColumnModel().getColumn(3).setPreferredWidth(10);
+            table.getColumnModel().getColumn(4).setPreferredWidth(10);
             table.getColumnModel().getColumn(5).setPreferredWidth(5);
         }
 
@@ -435,17 +438,17 @@ public class FormItems extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        if (inputKodeBarang.getText().isEmpty()) {
+        if (inputIdBarang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Barang!");
+                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Barang!");
             return; 
         }
-        String sql = "SELECT * FROM barang WHERE kode_barang=?";
+        String sql = "SELECT * FROM barang WHERE id_barang=?";
         try (Connection conn = Connector.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, inputKodeBarang.getText());
+            ps.setString(1, inputIdBarang.getText());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                sql = "UPDATE barang SET nama_barang=?, id_kategori=?, harga_beli=?, harga_jual=?, stok=?, satuan=? WHERE kode_barang=?";
+                sql = "UPDATE barang SET nama_barang=?, id_kategori=?, harga_beli=?, harga_jual=?, stok=?, satuan=? WHERE id_barang=?";
                 PreparedStatement updatePs = conn.prepareStatement(sql);
                 updatePs.setString(1, inputNamaBarang.getText().isEmpty() ? rs.getString("nama_barang") : inputNamaBarang.getText());
                 updatePs.setString(2, inputIdKategoriBarang.getText().isEmpty() ? rs.getString("id_kategori") : inputIdKategoriBarang.getText());
@@ -453,14 +456,14 @@ public class FormItems extends javax.swing.JPanel {
                 updatePs.setString(4, inputHargaJualBarang.getText().isEmpty() ? rs.getString("harga_jual") : inputHargaJualBarang.getText());
                 updatePs.setString(5, inputStokBarang.getText().isEmpty() ? rs.getString("stok") : inputStokBarang.getText());
                 updatePs.setString(6, inputSatuanBarang.getText().isEmpty() ? rs.getString("satuan") : inputSatuanBarang.getText());
-                updatePs.setString(7, inputKodeBarang.getText().toUpperCase()); // Primary Key
+                updatePs.setString(7, inputIdBarang.getText().toUpperCase()); // Primary Key
                 updatePs.executeUpdate();
                 loadDataTable();
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Barang Dengan Kode : " + inputKodeBarang.getText().toUpperCase() + " Berhasil Diubah!");
+                    "Data Barang Dengan ID : " + inputIdBarang.getText().toUpperCase() + " Berhasil Diubah!");
             } else {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Barang Dengan Kode : " + inputKodeBarang.getText().toUpperCase() + " Tidak Terdaftar!");
+                    "Data Barang Dengan ID : " + inputIdBarang.getText().toUpperCase() + " Tidak Terdaftar!");
             }
         } catch (Exception e) {
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.BOTTOM_RIGHT,
@@ -470,26 +473,26 @@ public class FormItems extends javax.swing.JPanel {
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        if (inputKodeBarang.getText().isEmpty()) {
+        if (inputIdBarang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Barang!");
+                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Barang!");
             return; 
         }
-        String sql = "SELECT * FROM barang WHERE kode_barang=?";
+        String sql = "SELECT * FROM barang WHERE id_barang=?";
         try (Connection conn = Connector.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, inputKodeBarang.getText());
+            ps.setString(1, inputIdBarang.getText());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                sql = "DELETE FROM barang WHERE kode_barang=?";
+                sql = "DELETE FROM barang WHERE id_barang=?";
                 PreparedStatement deletePs = conn.prepareStatement(sql);
-                deletePs.setString(1, inputKodeBarang.getText().toUpperCase()); // Primary Key
+                deletePs.setString(1, inputIdBarang.getText().toUpperCase()); // Primary Key
                 deletePs.executeUpdate();
                 loadDataTable();
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Barang Dengan Kode : " + inputCariBarang.getText().toUpperCase() + " Berhasil Dihapus!");
+                    "Data Barang Dengan ID : " + inputCariBarang.getText().toUpperCase() + " Berhasil Dihapus!");
             } else {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Barang Dengan Kode : " + inputCariBarang.getText().toUpperCase() + " Tidak Ditemukan!");
+                    "Data Barang Dengan ID : " + inputCariBarang.getText().toUpperCase() + " Tidak Ditemukan!");
             }
         } catch (Exception e) {
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.BOTTOM_RIGHT,
@@ -499,7 +502,7 @@ public class FormItems extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        inputKodeBarang.setText("");
+        inputIdBarang.setText("");
         inputNamaBarang.setText("");
         inputIdKategoriBarang.setText("");
         inputHargaBeliBarang.setText("");
@@ -512,10 +515,10 @@ public class FormItems extends javax.swing.JPanel {
     private void cariBarangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariBarangBtnActionPerformed
         if (inputCariBarang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Barang Pada Pencarian!");
+                "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Barang Pada Pencarian!");
             return;
         }
-        String sql = "SELECT * FROM barang WHERE kode_barang=?";
+        String sql = "SELECT * FROM barang WHERE id_barang=?";
         try (Connection conn = Connector.getConnection(); 
             PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, inputCariBarang.getText());
@@ -525,21 +528,22 @@ public class FormItems extends javax.swing.JPanel {
                 tableModel.setRowCount(0);
                 do {
                     Object[] row = new Object[]{
-                        rs.getString("kode_barang"),
+                        rs.getString("id_barang"),
                         rs.getString("nama_barang"),
                         rs.getString("id_kategori"),
                         rs.getString("harga_beli"),
                         rs.getString("harga_jual"),
                         rs.getString("stok"),
-                        rs.getString("satuan")
+                        rs.getString("satuan"),
+                        rs.getString("added_by")
                     };
                     tableModel.addRow(row);
                 } while (rs.next());
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Barang Dengan Kode : " + inputCariBarang.getText().toUpperCase() + " Berhasil Ditemukan!");
+                    "Data Barang Dengan ID : " + inputCariBarang.getText().toUpperCase() + " Berhasil Ditemukan!");
             } else {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Barang Dengan Kode : " + inputCariBarang.getText().toUpperCase() + " Tidak Ditemukan!");
+                    "Data Barang Dengan ID : " + inputCariBarang.getText().toUpperCase() + " Tidak Ditemukan!");
             }
         } catch (Exception e) {
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.BOTTOM_RIGHT,
@@ -549,9 +553,9 @@ public class FormItems extends javax.swing.JPanel {
     }//GEN-LAST:event_cariBarangBtnActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if (inputKodeBarang.getText().isEmpty()) {
+        if (inputIdBarang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Barang!");
+                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Barang!");
             return; 
         }
         if (inputNamaBarang.getText().isEmpty()) {
@@ -585,18 +589,18 @@ public class FormItems extends javax.swing.JPanel {
             return;
         }
 
-        String sqlCheck = "SELECT * FROM barang WHERE kode_barang=?";
-        String sqlInsert = "INSERT INTO barang (kode_barang, nama_barang, id_kategori, harga_beli, harga_jual, stok, satuan, added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlCheck = "SELECT * FROM barang WHERE id_barang=?";
+        String sqlInsert = "INSERT INTO barang (id_barang, nama_barang, id_kategori, harga_beli, harga_jual, stok, satuan, added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Connector.getConnection(); PreparedStatement psCheck = conn.prepareStatement(sqlCheck)) {
-            psCheck.setString(1, inputKodeBarang.getText());
+            psCheck.setString(1, inputIdBarang.getText());
             ResultSet rs = psCheck.executeQuery();
             if (rs.next()) {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                        "Data Barang Dengan Kode : " + inputKodeBarang.getText().toUpperCase() + " Sudah Terdaftar!");
+                        "Data Barang Dengan ID : " + inputIdBarang.getText().toUpperCase() + " Sudah Terdaftar!");
             } else {
                 try (PreparedStatement psInsert = conn.prepareStatement(sqlInsert)) {
-                    psInsert.setString(1, inputKodeBarang.getText().toUpperCase());
+                    psInsert.setString(1, inputIdBarang.getText().toUpperCase());
                     psInsert.setString(2, inputNamaBarang.getText());
                     psInsert.setString(3, inputIdKategoriBarang.getText());
                     psInsert.setString(4, inputHargaBeliBarang.getText());
@@ -608,7 +612,7 @@ public class FormItems extends javax.swing.JPanel {
                     if (affectedRows > 0) {
                         loadDataTable();
                         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                            "Data Barang Dengan Kode : " + inputKodeBarang.getText().toUpperCase() + " Berhasil Di Simpan!");
+                            "Data Barang Dengan ID : " + inputIdBarang.getText().toUpperCase() + " Berhasil Di Simpan!");
                     }
                 }
             }
@@ -635,12 +639,12 @@ public class FormItems extends javax.swing.JPanel {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                        "Data Kategori Barang Dengan Kode : " + inputIdKategoriBarang.getText().toUpperCase() + " Berhasil Ditemukan!");
+                        "Data Kategori Barang Dengan ID : " + inputIdKategoriBarang.getText().toUpperCase() + " Berhasil Ditemukan!");
                     inputNamaKategoriBarang.setText(rs.getString("nama_kategori"));
                     inputNamaKategoriBarang.setEnabled(false);
                 } else {
                     Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                        "Data Kategori Barang Dengan Kode : " + inputIdKategoriBarang.getText().toUpperCase() + " Tidak Ditemukan!");
+                        "Data Kategori Barang Dengan ID : " + inputIdKategoriBarang.getText().toUpperCase() + " Tidak Ditemukan!");
                 }
             }
         } catch (Exception e) {
@@ -667,8 +671,8 @@ public class FormItems extends javax.swing.JPanel {
     private javax.swing.JTextField inputCariBarang;
     private javax.swing.JTextField inputHargaBeliBarang;
     private javax.swing.JTextField inputHargaJualBarang;
+    private javax.swing.JTextField inputIdBarang;
     private javax.swing.JTextField inputIdKategoriBarang;
-    private javax.swing.JTextField inputKodeBarang;
     private javax.swing.JTextField inputNamaBarang;
     private javax.swing.JTextField inputNamaKategoriBarang;
     private javax.swing.JTextField inputSatuanBarang;

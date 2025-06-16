@@ -45,7 +45,7 @@ public class FormWarehouse extends javax.swing.JPanel {
             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Object[] row = new Object[]{
-                    rs.getString("kode_gudang"),
+                    rs.getString("id_gudang"),
                     rs.getString("nama_gudang"),
                     rs.getString("id_kepala_gudang"),
                     rs.getString("lokasi")
@@ -68,7 +68,7 @@ public class FormWarehouse extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        inputKodeGudang = new javax.swing.JTextField();
+        inputIdGudang = new javax.swing.JTextField();
         inputNamaGudang = new javax.swing.JTextField();
         inputIdKepalaGudang = new javax.swing.JTextField();
         inputNamaKepalaGudang = new javax.swing.JTextField();
@@ -120,7 +120,7 @@ public class FormWarehouse extends javax.swing.JPanel {
 
         roundPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setText("Kode Gudang");
+        jLabel2.setText("ID Gudang");
 
         jLabel3.setText("Nama Gudang");
 
@@ -153,7 +153,7 @@ public class FormWarehouse extends javax.swing.JPanel {
                 .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(inputLokasiGudang, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputNamaKepalaGudang, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputKodeGudang, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputIdGudang, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputNamaGudang, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundPanel2Layout.createSequentialGroup()
                         .addComponent(inputIdKepalaGudang, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +167,7 @@ public class FormWarehouse extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(inputKodeGudang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputIdGudang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -195,9 +195,9 @@ public class FormWarehouse extends javax.swing.JPanel {
 
         jLabel11.setText("1. Klik \"Simpan\" Untuk Menyimpan Data Gudang");
 
-        jLabel12.setText("2. Klik \"Edit\" Untuk Mengubah Data Gudang");
+        jLabel12.setText("2. Klik \"Ubah\" Untuk Mengubah Data Gudang");
 
-        jLabel13.setText("3. Klik \"Delete\" Untuk Menghapus Data Gudang");
+        jLabel13.setText("3. Klik \"Hapus\" Untuk Menghapus Data Gudang");
 
         jLabel14.setText("4. Klik \"Ulang\" Untuk Mengulang Input Data Gudang");
 
@@ -238,14 +238,14 @@ public class FormWarehouse extends javax.swing.JPanel {
             }
         });
 
-        editButton.setText("Edit");
+        editButton.setText("Ubah");
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("Delete");
+        deleteButton.setText("Hapus");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -266,7 +266,7 @@ public class FormWarehouse extends javax.swing.JPanel {
             }
         });
 
-        jLabel15.setText("Kode");
+        jLabel15.setText("ID");
 
         roundPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -278,7 +278,7 @@ public class FormWarehouse extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Kode", "Nama Gudang", "ID Kepala Gudang", "Lokasi"
+                "ID", "Nama Gudang", "ID Kepala Gudang", "Lokasi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -388,29 +388,29 @@ public class FormWarehouse extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        if (inputKodeGudang.getText().isEmpty()) {
+        if (inputIdGudang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Gudang!");
+                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Gudang!");
             return; 
         }
-        String sql = "SELECT * FROM gudang WHERE kode_gudang=?";
+        String sql = "SELECT * FROM gudang WHERE id_gudang=?";
         try (Connection conn = Connector.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, inputKodeGudang.getText());
+            ps.setString(1, inputIdGudang.getText());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                sql = "UPDATE gudang SET nama_gudang=?, id_kepala_gudang=?, lokasi=? WHERE kode_gudang=?";
+                sql = "UPDATE gudang SET nama_gudang=?, id_kepala_gudang=?, lokasi=? WHERE id_gudang=?";
                 PreparedStatement updatePs = conn.prepareStatement(sql);
                 updatePs.setString(1, inputNamaGudang.getText().isEmpty() ? rs.getString("nama_barang") : inputNamaGudang.getText());
                 updatePs.setString(2, inputIdKepalaGudang.getText().isEmpty() ? rs.getString("id_kategori") : inputIdKepalaGudang.getText());
                 updatePs.setString(3, inputLokasiGudang.getText().isEmpty() ? rs.getString("harga_beli") : inputLokasiGudang.getText());
-                updatePs.setString(4, inputKodeGudang.getText().toUpperCase()); // Primary Key
+                updatePs.setString(4, inputIdGudang.getText().toUpperCase()); // Primary Key
                 updatePs.executeUpdate();
                 loadDataTable();
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Gudang Dengan Kode : " + inputKodeGudang.getText().toUpperCase() + " Berhasil Diubah!");
+                    "Data Gudang Dengan ID : " + inputIdGudang.getText().toUpperCase() + " Berhasil Diubah!");
             } else {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Gudang Dengan Kode : " + inputKodeGudang.getText().toUpperCase() + " Tidak Terdaftar!");
+                    "Data Gudang Dengan ID : " + inputIdGudang.getText().toUpperCase() + " Tidak Terdaftar!");
             }
         } catch (Exception e) {
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.BOTTOM_RIGHT,
@@ -420,26 +420,26 @@ public class FormWarehouse extends javax.swing.JPanel {
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        if (inputKodeGudang.getText().isEmpty()) {
+        if (inputIdGudang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Gudang!");
+                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Gudang!");
             return; 
         }
-        String sql = "SELECT * FROM gudang WHERE kode_gudang=?";
+        String sql = "SELECT * FROM gudang WHERE id_gudang=?";
         try (Connection conn = Connector.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, inputKodeGudang.getText());
+            ps.setString(1, inputIdGudang.getText());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                sql = "DELETE FROM gudang WHERE kode_gudang=?";
+                sql = "DELETE FROM gudang WHERE id_gudang=?";
                 PreparedStatement deletePs = conn.prepareStatement(sql);
-                deletePs.setString(1, inputKodeGudang.getText().toUpperCase()); // Primary Key
+                deletePs.setString(1, inputIdGudang.getText().toUpperCase()); // Primary Key
                 deletePs.executeUpdate();
                 loadDataTable();
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Gudang Dengan Kode : " + inputCariGudang.getText().toUpperCase() + " Berhasil Dihapus!");
+                    "Data Gudang Dengan ID : " + inputCariGudang.getText().toUpperCase() + " Berhasil Dihapus!");
             } else {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Gudang Dengan Kode : " + inputCariGudang.getText().toUpperCase() + " Tidak Ditemukan!");
+                    "Data Gudang Dengan ID : " + inputCariGudang.getText().toUpperCase() + " Tidak Ditemukan!");
             }
         } catch (Exception e) {
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.BOTTOM_RIGHT,
@@ -449,7 +449,7 @@ public class FormWarehouse extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        inputKodeGudang.setText("");
+        inputIdGudang.setText("");
         inputNamaGudang.setText("");
         inputIdKepalaGudang.setText("");
         inputLokasiGudang.setText("");
@@ -459,10 +459,10 @@ public class FormWarehouse extends javax.swing.JPanel {
     private void cariGudangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariGudangBtnActionPerformed
         if (inputCariGudang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Gudang Pada Pencarian!");
+                "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Gudang Pada Pencarian!");
             return;
         }
-        String sql = "SELECT * FROM gudang WHERE kode_gudang=?";
+        String sql = "SELECT * FROM gudang WHERE id_gudang=?";
         try (Connection conn = Connector.getConnection(); 
             PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, inputCariGudang.getText());
@@ -472,7 +472,7 @@ public class FormWarehouse extends javax.swing.JPanel {
                 tableModel.setRowCount(0);
                 do {
                     Object[] row = new Object[]{
-                        rs.getString("kode_gudang"),
+                        rs.getString("id_gudang"),
                         rs.getString("nama_gudang"),
                         rs.getString("id_kepala_gudang"),
                         rs.getString("lokasi")
@@ -480,10 +480,10 @@ public class FormWarehouse extends javax.swing.JPanel {
                     tableModel.addRow(row);
                 } while (rs.next());
                 Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Gudang Dengan Kode : " + inputCariGudang.getText().toUpperCase() + " Berhasil Ditemukan!");
+                    "Data Gudang Dengan ID : " + inputCariGudang.getText().toUpperCase() + " Berhasil Ditemukan!");
             } else {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                    "Data Gudang Dengan Kode : " + inputCariGudang.getText().toUpperCase() + " Tidak Ditemukan!");
+                    "Data Gudang Dengan ID : " + inputCariGudang.getText().toUpperCase() + " Tidak Ditemukan!");
             }
         } catch (Exception e) {
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.BOTTOM_RIGHT,
@@ -493,9 +493,9 @@ public class FormWarehouse extends javax.swing.JPanel {
     }//GEN-LAST:event_cariGudangBtnActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if (inputKodeGudang.getText().isEmpty()) {
+        if (inputIdGudang.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
-                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi Kode Gudang!");
+                    "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Gudang!");
             return; 
         }
         if (inputNamaGudang.getText().isEmpty()) {
@@ -514,18 +514,18 @@ public class FormWarehouse extends javax.swing.JPanel {
             return;
         }
 
-        String sqlCheck = "SELECT * FROM gudang WHERE kode_gudang=?";
-        String sqlInsert = "INSERT INTO barang (kode_gudang, nama_gudang, id_kepala_gudang, lokasi) VALUES (?, ?, ?, ?)";
+        String sqlCheck = "SELECT * FROM gudang WHERE id_gudang=?";
+        String sqlInsert = "INSERT INTO barang (id_gudang, nama_gudang, id_kepala_gudang, lokasi) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = Connector.getConnection(); PreparedStatement psCheck = conn.prepareStatement(sqlCheck)) {
-            psCheck.setString(1, inputKodeGudang.getText());
+            psCheck.setString(1, inputIdGudang.getText());
             ResultSet rs = psCheck.executeQuery();
             if (rs.next()) {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                        "Data Gudang Dengan Kode : " + inputKodeGudang.getText().toUpperCase() + " Sudah Terdaftar!");
+                        "Data Gudang Dengan ID : " + inputIdGudang.getText().toUpperCase() + " Sudah Terdaftar!");
             } else {
                 try (PreparedStatement psInsert = conn.prepareStatement(sqlInsert)) {
-                    psInsert.setString(1, inputKodeGudang.getText().toUpperCase());
+                    psInsert.setString(1, inputIdGudang.getText().toUpperCase());
                     psInsert.setString(2, inputNamaGudang.getText());
                     psInsert.setString(3, inputIdKepalaGudang.getText());
                     psInsert.setString(4, inputLokasiGudang.getText());
@@ -533,7 +533,7 @@ public class FormWarehouse extends javax.swing.JPanel {
                     if (affectedRows > 0) {
                         loadDataTable();
                         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                            "Data Gudang Dengan Kode : " + inputKodeGudang.getText().toUpperCase() + " Berhasil Di Simpan!");
+                            "Data Gudang Dengan ID : " + inputIdGudang.getText().toUpperCase() + " Berhasil Di Simpan!");
                     }
                 }
             }
@@ -560,12 +560,12 @@ public class FormWarehouse extends javax.swing.JPanel {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.BOTTOM_RIGHT,
-                        "Data User Dengan Kode : " + inputIdKepalaGudang.getText().toUpperCase() + " Berhasil Ditemukan!");
+                        "Data User Dengan ID : " + inputIdKepalaGudang.getText().toUpperCase() + " Berhasil Ditemukan!");
                     inputNamaKepalaGudang.setText(rs.getString("fullname"));
                     inputNamaKepalaGudang.setEnabled(false);
                 } else {
                     Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.BOTTOM_RIGHT,
-                        "Data User Dengan Kode : " + inputIdKepalaGudang.getText().toUpperCase() + " Tidak Ditemukan!");
+                        "Data User Dengan ID : " + inputIdKepalaGudang.getText().toUpperCase() + " Tidak Ditemukan!");
                 }
             }
         } catch (Exception e) {
@@ -582,8 +582,8 @@ public class FormWarehouse extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JTextField inputCariGudang;
+    private javax.swing.JTextField inputIdGudang;
     private javax.swing.JTextField inputIdKepalaGudang;
-    private javax.swing.JTextField inputKodeGudang;
     private javax.swing.JTextField inputLokasiGudang;
     private javax.swing.JTextField inputNamaGudang;
     private javax.swing.JTextField inputNamaKepalaGudang;

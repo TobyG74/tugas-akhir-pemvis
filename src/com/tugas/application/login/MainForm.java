@@ -17,9 +17,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import com.tugas.application.Application;
 import com.tugas.application.form.FormCategory;
+import com.tugas.application.form.FormCustomer;
 import com.tugas.application.form.FormDashboard;
 import com.tugas.application.form.FormItems;
+import com.tugas.application.form.FormUser;
+import com.tugas.application.form.FormSupplier;
 import com.tugas.application.form.FormWarehouse;
+import com.tugas.application.report.ReportIncomingGoods;
 import com.tugas.manager.RoleManager;
 import com.tugas.menu.Menu;
 import com.tugas.menu.MenuAction;
@@ -81,15 +85,17 @@ public class MainForm extends JLayeredPane {
                     } else if (index == 2 && subIndex == 0) {
                         Application.showForm(new FormCategory());
                     } else if (index == 3 && subIndex == 0) {
-//                        Application.showForm(new FormCategory());
+                        Application.showForm(new FormSupplier());
                     } else if (index == 4 && subIndex == 0) {
-//                        Application.showForm(new FormCategory());
+                        Application.showForm(new FormCustomer());
                     } else if (index == 5 && subIndex == 0) {
                         Application.showForm(new FormWarehouse());
                     } else if (index == 6 && subIndex == 0) {
-//                        Application.showForm(new FormCategory());
+                        Application.showForm(new FormUser());
                     } else if (index == 7 && subIndex == 0) {
-//                        Application.showForm(new FormCategory());
+                        Application.showForm(new ReportIncomingGoods());
+                    } else if (index == 8 && subIndex == 0) {
+//                        Application.showForm(new ReportOutgoingGoods());
                     } else if (index == 9 && subIndex == 0) {
 //                        Application.showForm(new FormCategory());
                     } else if (index == 10 && subIndex == 0) {
@@ -110,6 +116,8 @@ public class MainForm extends JLayeredPane {
                         Application.showForm(new FormCategory());
                     } else if (index == 5 && subIndex == 0) {
                         Application.showForm(new FormWarehouse());
+                    } else if (index == 7 && subIndex == 0) {
+                        Application.showForm(new ReportIncomingGoods());
                     } else if (index == 12 && subIndex == 0) {
                         Application.logout();
                     }

@@ -72,7 +72,7 @@ public class FormDashboard extends javax.swing.JPanel {
         card2.setValues("Rp100.000");
         card3.setDescription("Total Penjualan");
         
-        card3.setValues(totalUser());
+        card3.setValues(totalCustomer());
         card3.setDescription("Total Pengguna");
     }
     
@@ -89,8 +89,8 @@ public class FormDashboard extends javax.swing.JPanel {
         return "0";
     }
     
-    private String totalUser() {
-        String sql = "select count(*) from users";
+    private String totalCustomer() {
+        String sql = "select count(*) from pelanggan";
         try (Connection conn = Connector.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();

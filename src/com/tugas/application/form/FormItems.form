@@ -177,7 +177,7 @@
                           <Component id="inputHargaJualBarang" max="32767" attributes="0"/>
                           <Component id="inputHargaBeliBarang" alignment="0" max="32767" attributes="0"/>
                           <Component id="inputNamaKategoriBarang" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputKodeBarang" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inputIdBarang" alignment="0" max="32767" attributes="0"/>
                           <Component id="inputNamaBarang" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="inputIdKategoriBarang" min="-2" pref="142" max="-2" attributes="0"/>
@@ -197,7 +197,7 @@
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="inputKodeBarang" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputIdBarang" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -243,7 +243,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Kode Barang"/>
+            <Property name="text" type="java.lang.String" value="ID Barang"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -276,7 +276,7 @@
             <Property name="text" type="java.lang.String" value="Satuan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputKodeBarang">
+        <Component class="javax.swing.JTextField" name="inputIdBarang">
         </Component>
         <Component class="javax.swing.JTextField" name="inputNamaBarang">
         </Component>
@@ -370,12 +370,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
-            <Property name="text" type="java.lang.String" value="2. Klik &quot;Edit&quot; Untuk Mengubah Data Barang"/>
+            <Property name="text" type="java.lang.String" value="2. Klik &quot;Ubah&quot; Untuk Mengubah Data Barang"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
-            <Property name="text" type="java.lang.String" value="3. Klik &quot;Delete&quot; Untuk Menghapus Data Barang"/>
+            <Property name="text" type="java.lang.String" value="3. Klik &quot;Hapus&quot; Untuk Menghapus Data Barang"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
@@ -395,7 +395,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="editButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit"/>
+        <Property name="text" type="java.lang.String" value="Ubah"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editButtonActionPerformed"/>
@@ -427,7 +427,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Kode"/>
+        <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
     </Component>
     <Container class="com.tugas.swing.RoundPanel" name="roundPanel4">
@@ -474,14 +474,15 @@
             <Component class="javax.swing.JTable" name="table">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="4">
-                    <Column editable="false" title="Kode" type="java.lang.Object"/>
+                  <Table columnCount="8" rowCount="4">
+                    <Column editable="false" title="ID" type="java.lang.Object"/>
                     <Column editable="false" title="Nama Barang" type="java.lang.Object"/>
                     <Column editable="false" title="ID Kategori" type="java.lang.Object"/>
                     <Column editable="false" title="Harga Beli" type="java.lang.Object"/>
                     <Column editable="false" title="Harga Jual" type="java.lang.Object"/>
                     <Column editable="false" title="Stok" type="java.lang.Object"/>
                     <Column editable="false" title="Satuan" type="java.lang.Object"/>
+                    <Column editable="false" title="Ditambahkan Oleh" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -501,17 +502,22 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="5" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
