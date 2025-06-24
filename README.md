@@ -5,6 +5,43 @@
 ![MySQL](https://img.shields.io/badge/Database-MySQL-blue)
 ![NetBeans](https://img.shields.io/badge/IDE-NetBeans-green)
 
+## 📑 Daftar Isi
+
+-   [📋 Deskripsi Project](#-deskripsi-project)
+-   [✨ Fitur Utama](#-fitur-utama)
+    -   [🏢 Manajemen Master Data](#-manajemen-master-data)
+    -   [📊 Laporan dan Transaksi](#-laporan-dan-transaksi)
+    -   [🔐 Sistem Keamanan](#-sistem-keamanan)
+    -   [🎨 User Interface](#-user-interface)
+-   [🛠 Teknologi yang Digunakan](#-teknologi-yang-digunakan)
+    -   [Backend](#backend)
+    -   [Frontend](#frontend)
+    -   [Libraries dan Dependencies](#libraries-dan-dependencies)
+-   [📁 Struktur Project](#-struktur-project)
+-   [⚙️ Setup dan Instalasi](#️-setup-dan-instalasi)
+    -   [Prerequisites](#prerequisites)
+    -   [Langkah Instalasi](#langkah-instalasi)
+-   [🗄️ Struktur Database](#️-struktur-database)
+    -   [Tabel Utama](#tabel-utama)
+    -   [Relasi Database](#relasi-database)
+    -   [Konfigurasi Menu dan Form](#konfigurasi-menu-dan-form)
+-   [🎯 Cara Penggunaan](#-cara-penggunaan)
+    -   [Login System](#login-system)
+    -   [Navigasi Menu](#navigasi-menu)
+    -   [Form Management](#form-management)
+-   [📊 Fitur Laporan](#-fitur-laporan)
+    -   [Export Capabilities](#export-capabilities)
+    -   [Jenis Laporan](#jenis-laporan)
+-   [🎨 Customization](#-customization)
+    -   [Theme Configuration](#theme-configuration)
+    -   [Custom Components](#custom-components)
+-   [🔧 Maintenance dan Development](#-maintenance-dan-development)
+    -   [Code Structure](#code-structure)
+    -   [Best Practices](#best-practices)
+-   [🐛 Troubleshooting](#-troubleshooting)
+    -   [Common Issues](#common-issues)
+-   [👥 Special Credits](#-special-credits)
+
 ## 📋 Deskripsi Project
 
 Sistem Manajemen Inventory adalah aplikasi desktop berbasis Java Swing yang dirancang untuk mengelola stok barang, gudang, dan operasi inventory perusahaan. Aplikasi ini menyediakan interface yang user-friendly dengan tema modern menggunakan FlatLaf dan dilengkapi dengan fitur manajemen yang komprehensif.
@@ -88,50 +125,6 @@ tugas-pemvis/
 
 ## ⚙️ Setup dan Instalasi
 
-### Konfigurasi Klik Menu Pada File [MainForm.java](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/application/login/MainForm.java)
-
-```java
-private void initMenuEvent() {
-    menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
-        if (index == 0 && subIndex == 0) {
-                Application.showForm(new FormDashboard());
-        } else if (index == 1 && subIndex == 0) {
-                Application.showForm(new FormItems());
-        } else if (index == 12 && subIndex == 0) {
-                Application.logout();
-        }
-    });
-}
-```
-
-### Konfigurasi Penamaan Menu Pada File [Menu.java](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/menu/Menu.java)
-
-```java
-private final String menuItems[][] = {
-        {"~Menu Utama~"},
-        {"Beranda"},
-        {"~Menu Form~"},
-        {"Barang"},
-        {"Kategori"},
-        {"Pemasok"},
-        {"Pelanggan"},
-        {"Gudang"},
-        {"Karyawan"},
-        {"~Menu Laporan~"},
-        {"Barang Masuk"},
-        {"Barang Keluar"},
-        {"Penjualan"},
-        {"Stok"},
-        {"~Menu Pengguna~"},
-        {"Ganti Password"},
-        {"Logout"}
-    };
-```
-
-### Konfigurasi Icon Pada Folder [Icon](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/menu/icon)
-
-### Pembuatan Form Pada Folder [Form](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/application/form)
-
 ### Prerequisites
 
 -   Java Development Kit (JDK) 11 atau lebih tinggi
@@ -198,6 +191,50 @@ CREATE TABLE gudang (
     FOREIGN KEY (id_kepala_gudang) REFERENCES users(id_user)
 );
 ```
+
+### Konfigurasi Klik Menu Pada File [MainForm.java](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/application/login/MainForm.java)
+
+```java
+private void initMenuEvent() {
+    menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        if (index == 0 && subIndex == 0) {
+                Application.showForm(new FormDashboard());
+        } else if (index == 1 && subIndex == 0) {
+                Application.showForm(new FormItems());
+        } else if (index == 12 && subIndex == 0) {
+                Application.logout();
+        }
+    });
+}
+```
+
+### Konfigurasi Penamaan Menu Pada File [Menu.java](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/menu/Menu.java)
+
+```java
+private final String menuItems[][] = {
+        {"~Menu Utama~"},
+        {"Beranda"},
+        {"~Menu Form~"},
+        {"Barang"},
+        {"Kategori"},
+        {"Pemasok"},
+        {"Pelanggan"},
+        {"Gudang"},
+        {"Karyawan"},
+        {"~Menu Laporan~"},
+        {"Barang Masuk"},
+        {"Barang Keluar"},
+        {"Penjualan"},
+        {"Stok"},
+        {"~Menu Pengguna~"},
+        {"Ganti Password"},
+        {"Logout"}
+    };
+```
+
+### Konfigurasi Icon Pada Folder [Icon](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/menu/icon)
+
+### Pembuatan Form Pada Folder [Form](https://github.com/TobyG74/tugas-akhir-pemvis/blob/master/src/com/tugas/application/form)
 
 ## 🎯 Cara Penggunaan
 
@@ -316,6 +353,27 @@ Project menggunakan komponen custom seperti:
     - Implement proper resource cleanup
     - Optimize database queries
 
-## Special Credits :
+## 📄 License
+
+Project ini menggunakan lisensi sesuai dengan ketentuan tugas akhir pemrograman visual.
+
+## 👥 Special Credits
 
 -   [DJ-Raven](https://github.com/DJ-Raven)
+
+## 📞 Support
+
+Untuk pertanyaan atau dukungan teknis, silakan hubungi:
+
+-   Email: [contact-email]
+-   GitHub Issues: [repository-issues-url]
+
+## 🔄 Version History
+
+-   **v1.0.0**: Initial release dengan fitur dasar CRUD
+-   **v1.1.0**: Penambahan sistem laporan
+-   **v1.2.0**: UI improvements dan optimisasi
+
+---
+
+**Dibuat dengan ❤️ menggunakan Java Swing dan MySQL**
