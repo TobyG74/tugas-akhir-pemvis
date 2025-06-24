@@ -84,8 +84,6 @@ tugas-pemvis/
 │       ├── toast/                # Notification system
 │       └── utils/                # Utility classes
 ├── lib/                          # External libraries
-├── resources/                    # Resources (icons, images, fonts)
-└── build/                        # Compiled classes
 ```
 
 ## ⚙️ Setup dan Instalasi
