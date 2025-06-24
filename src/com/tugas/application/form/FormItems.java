@@ -144,6 +144,12 @@ public class FormItems extends javax.swing.JPanel {
 
         jLabel8.setText("Satuan");
 
+        inputIdKategoriBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputIdKategoriBarangActionPerformed(evt);
+            }
+        });
+
         inputHargaJualBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputHargaJualBarangActionPerformed(evt);
@@ -661,6 +667,10 @@ public class FormItems extends javax.swing.JPanel {
     private void inputHargaJualBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHargaJualBarangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputHargaJualBarangActionPerformed
+
+    private void inputIdKategoriBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIdKategoriBarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputIdKategoriBarangActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cariBarangBtn;

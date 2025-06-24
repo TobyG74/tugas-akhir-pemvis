@@ -19,7 +19,6 @@ public class LoginForm extends JPanel {
 
     public LoginForm() {
         init();
-        addEvent();
     }
 
     private void init() {
@@ -71,31 +70,8 @@ public class LoginForm extends JPanel {
         if (!remembered[0].isEmpty()) {
             chRememberMe.setSelected(true);
         }
-    }
-
-    private Component createSignupLabel() {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        panel.putClientProperty(FlatClientProperties.STYLE, "" +
-                "background:null");
-        JButton cmdRegister = new JButton("<html><a href=\"#\">Sign up</a></html>");
-        cmdRegister.putClientProperty(FlatClientProperties.STYLE, "" +
-                "border:3,3,3,3");
-        cmdRegister.setContentAreaFilled(false);
-        cmdRegister.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        cmdRegister.addActionListener(e -> {
-            FormsManager.getInstance().showForm(new RegisterForm());
-        });
-        JLabel label = new JLabel("Don't have an account ?");
-        label.putClientProperty(FlatClientProperties.STYLE, "" +
-                "[light]foreground:lighten(@foreground,30%);" +
-                "[dark]foreground:darken(@foreground,30%)");
-        panel.add(label);
-        panel.add(cmdRegister);
-        return panel;
-    }
-    
-    private void addEvent() {
-        cmdLogin.addActionListener((e) -> {
+        
+               cmdLogin.addActionListener((e) -> {
             String username = txtUsername.getText();
             String password = new String(txtPassword.getPassword());
             String fullname = RoleManager.getFullnameFromFile();
@@ -109,6 +85,7 @@ public class LoginForm extends JPanel {
                 if (rs.next()) {
                     RoleManager.writeRoleToFile(rs.getString("role"), rs.getString("fullname"), rs.getString("username"));
                 }
+                Thread.sleep(2000);
             } catch (Exception err) {
                 err.printStackTrace();
             }
@@ -132,6 +109,27 @@ public class LoginForm extends JPanel {
         });
     }
 
+    private Component createSignupLabel() {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        panel.putClientProperty(FlatClientProperties.STYLE, "" +
+                "background:null");
+        JButton cmdRegister = new JButton("<html><a href=\"#\">Sign up</a></html>");
+        cmdRegister.putClientProperty(FlatClientProperties.STYLE, "" +
+                "border:3,3,3,3");
+        cmdRegister.setContentAreaFilled(false);
+        cmdRegister.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        cmdRegister.addActionListener(e -> {
+            FormsManager.getInstance().showForm(new RegisterForm());
+        });
+        JLabel label = new JLabel("Don't have an account ?");
+        label.putClientProperty(FlatClientProperties.STYLE, "" +
+                "[light]foreground:lighten(@foreground,30%);" +
+                "[dark]foreground:darken(@foreground,30%)");
+        panel.add(label);
+        panel.add(cmdRegister);
+        return panel;
+    }
+    
     private boolean checkLogin(String username, String password) {
         String sql = "SELECT * FROM users WHERE username=? AND password=?";
         try (Connection conn = Connector.getConnection();

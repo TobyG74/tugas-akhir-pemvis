@@ -12,7 +12,7 @@ import java.util.Properties;
  * @author tobi
  */
 public class RoleManager {
-    private static final String FILE_PATH = "src/com/tugas/manager/RoleManager.properties";
+    private static final String FILE_PATH = "src/com/tugas/manager/config/RoleManager.properties";
     
     public static void writeRoleToFile(String role, String fullname, String username) {
         Properties props = new Properties();

@@ -281,6 +281,9 @@
         <Component class="javax.swing.JTextField" name="inputNamaBarang">
         </Component>
         <Component class="javax.swing.JTextField" name="inputIdKategoriBarang">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputIdKategoriBarangActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="inputNamaKategoriBarang">
         </Component>

@@ -25,7 +25,7 @@ import com.tugas.menu.mode.ToolBarAccentColor;
  */
 public class Menu extends JPanel {
 
-    private final String menuItems[][] = {
+    private final String menuItemsAdmin[][] = {
         {"~Menu Utama~"},
         {"Beranda"},
         {"~Menu Form~"},
@@ -35,6 +35,36 @@ public class Menu extends JPanel {
         {"Pelanggan"},
         {"Gudang"},
         {"Karyawan"},
+        {"~Menu Laporan~"},
+        {"Barang Masuk"},
+        {"Barang Keluar"},
+        {"Penjualan"},
+        {"Stok"},
+        {"~Menu Pengguna~"},
+        {"Ganti Password"},
+        {"Logout"}
+    };
+    
+    private final String menuItemsKepalaGudang[][] = {
+        {"~Menu Utama~"},
+        {"Beranda"},
+        {"~Menu Form~"},
+        {"Barang"},
+        {"Kategori"},
+        {"Gudang"},
+        {"~Menu Laporan~"},
+        {"Barang Masuk"},
+        {"Barang Keluar"},
+        {"Penjualan"},
+        {"Stok"},
+        {"~Menu Pengguna~"},
+        {"Ganti Password"},
+        {"Logout"}
+    };
+    
+    private final String menuItemsManager[][] = {
+        {"~Menu Utama~"},
+        {"Beranda"},
         {"~Menu Laporan~"},
         {"Barang Masuk"},
         {"Barang Keluar"},
@@ -143,15 +173,45 @@ public class Menu extends JPanel {
 
     private void createMenu() {
         int index = 0;
-        for (int i = 0; i < menuItems.length; i++) {
-            String menuName = menuItems[i][0];
-            if (menuName.startsWith("~") && menuName.endsWith("~")) {
-                panelMenu.add(createTitle(menuName));
-            } else {
-                MenuItem menuItem = new MenuItem(this, menuItems[i], index++, events);
-                panelMenu.add(menuItem);
+        switch (RoleManager.getRoleFromFile()) {
+            case "Admin": {
+                for (String[] menuItemsAdmin1 : menuItemsAdmin) {
+                    String menuName = menuItemsAdmin1[0];
+                    if (menuName.startsWith("~") && menuName.endsWith("~")) {
+                        panelMenu.add(createTitle(menuName));
+                    } else {
+                        MenuItem menuItem = new MenuItem(this, menuItemsAdmin1, index++, events);
+                        panelMenu.add(menuItem);
+                    }
+                }
+                break;
+            }
+            case "KepalaGudang": {
+                for (String[] menuItemsKepalaGudang1 : menuItemsKepalaGudang) {
+                    String menuName = menuItemsKepalaGudang1[0];
+                    if (menuName.startsWith("~") && menuName.endsWith("~")) {
+                        panelMenu.add(createTitle(menuName));
+                    } else {
+                        MenuItem menuItem = new MenuItem(this, menuItemsKepalaGudang1, index++, events);
+                        panelMenu.add(menuItem);
+                    }
+                }
+                break;
+            }
+            case "Manager": {
+                for (String[] menuItemsManager1 : menuItemsManager) {
+                    String menuName = menuItemsManager1[0];
+                    if (menuName.startsWith("~") && menuName.endsWith("~")) {
+                        panelMenu.add(createTitle(menuName));
+                    } else {
+                        MenuItem menuItem = new MenuItem(this, menuItemsManager1, index++, events);
+                        panelMenu.add(menuItem);
+                    }
+                }
+                break;
             }
         }
+        
     }
 
     private JLabel createTitle(String title) {
