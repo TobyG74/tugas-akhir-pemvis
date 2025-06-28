@@ -134,7 +134,7 @@ public class FormItems extends javax.swing.JPanel {
 
         jLabel3.setText("Nama Barang");
 
-        jLabel4.setText("ID Kategori");
+        jLabel4.setText("Kode Kategori");
 
         jLabel5.setText("Harga Beli");
 
@@ -439,7 +439,7 @@ public class FormItems extends javax.swing.JPanel {
                     .addComponent(roundPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(roundPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -639,7 +639,7 @@ public class FormItems extends javax.swing.JPanel {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.BOTTOM_RIGHT,
                 "Tidak Dapat Menyimpan Data Kamu Belum Mengisi ID Kategori Barang Pada Pencarian!");
         }
-        String sql = "SELECT * FROM kategori WHERE kode_kategori=?";
+        String sql = "SELECT * FROM kategori WHERE id_kategori=?";
         try (Connection conn = Connector.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, inputIdKategoriBarang.getText());
             try (ResultSet rs = ps.executeQuery()) {

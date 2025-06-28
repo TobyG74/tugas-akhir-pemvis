@@ -85,7 +85,6 @@ public class LoginForm extends JPanel {
                 if (rs.next()) {
                     RoleManager.writeRoleToFile(rs.getString("role"), rs.getString("fullname"), rs.getString("username"));
                 }
-                Thread.sleep(2000);
             } catch (Exception err) {
                 err.printStackTrace();
             }

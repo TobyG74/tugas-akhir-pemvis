@@ -34,10 +34,26 @@
 				<reportElement x="10" y="0" width="84" height="77" uuid="1515e369-6b5c-467d-9b0e-ebcfae0cea09"/>
 				<imageExpression><![CDATA["C:\\Users\\tobis\\Downloads\\Logo_pv[1].png"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="247" y="61" width="100" height="20" uuid="d5dfb9e9-7240-41bd-9d83-e01dc5aad29a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Jl. Jalan]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="100" height="20" uuid="3447c04e-b3f2-488a-bf91-c68d013b6929"/>
+				<text><![CDATA[Tanggal : ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="62" y="0" width="100" height="20" uuid="7c010589-0f0b-43b2-b907-1aaf0e07cbd5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">

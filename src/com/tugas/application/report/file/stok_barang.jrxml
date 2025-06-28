@@ -31,10 +31,26 @@
 				</textElement>
 				<text><![CDATA[LAPORAN STOK BARANG]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="222" y="59" width="100" height="20" uuid="dfa29571-1db3-4d22-9c31-42c633f1faac"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Jl. Jalan]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="5e78f33f-4bcf-4ed4-aaf2-e55987bd25f9"/>
+				<text><![CDATA[Tanggal : ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="59" y="0" width="100" height="20" uuid="49a90927-7ea7-44d8-b6f2-736d42ccd3db"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
