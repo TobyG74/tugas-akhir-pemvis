@@ -59,14 +59,28 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="123" y="17" width="319" height="45" uuid="1494bfed-7a6b-429f-98e3-02ac872b450e"/>
+				<reportElement x="145" y="3" width="326" height="27" uuid="9b84bbf9-5305-435c-a55a-ec0e91f2908d"/>
 				<textElement>
-					<font size="24"/>
+					<font size="20"/>
 				</textElement>
-				<text><![CDATA[LAPORAN BARANG MASUK]]></text>
+				<text><![CDATA[PT. CAHAYA ERLANGGA MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="52" width="108" height="27" uuid="931ed99a-e278-49c9-946c-d1ba91f3cd26"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Depok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="30" width="221" height="27" uuid="9a5f4e42-ebf4-415c-a3cf-6da83d65a50f"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[LAPORAN BARANG KELUAR]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="0" width="84" height="77" uuid="b04cff1b-abfc-4fdc-abf4-eaa4291a86db"/>
+				<reportElement x="0" y="0" width="84" height="77" uuid="7dd5e0b2-f656-4df4-85c3-9960a2c82330"/>
 				<imageExpression><![CDATA["C:\\Users\\tobis\\Downloads\\Logo_pv[1].png"]]></imageExpression>
 			</image>
 		</band>
@@ -268,10 +282,19 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="21" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="454" y="64" width="83" height="20" uuid="86c40007-eede-4960-b9c2-a24481987ab5"/>
+				<text><![CDATA[(Nama Lengkap)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="0" width="42" height="20" uuid="0c9a60f1-1985-47a0-9284-8ac57dbe8d01"/>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

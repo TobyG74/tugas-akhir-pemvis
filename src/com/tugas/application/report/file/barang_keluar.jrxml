@@ -33,16 +33,30 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="118" y="17" width="319" height="45" uuid="d40f4f17-e6ad-4c94-92e0-b6b04b08bd81"/>
+				<reportElement x="174" y="29" width="221" height="27" uuid="d40f4f17-e6ad-4c94-92e0-b6b04b08bd81"/>
 				<textElement>
-					<font size="24"/>
+					<font size="16"/>
 				</textElement>
-				<text><![CDATA[LAPORAN BARANG MASUK]]></text>
+				<text><![CDATA[LAPORAN BARANG KELUAR]]></text>
 			</staticText>
 			<image>
 				<reportElement x="0" y="2" width="84" height="77" uuid="73b8f43d-3635-47be-86ce-6515bf9eec4d"/>
 				<imageExpression><![CDATA["C:\\Users\\tobis\\Downloads\\Logo_pv[1].png"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="135" y="2" width="326" height="27" uuid="9fab15a0-8281-488d-970e-ffbad79a34e0"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[PT. CAHAYA ERLANGGA MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="52" width="108" height="27" uuid="0e0ad1ea-a716-467b-b7b2-fed5d2ed86ac"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Depok]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -242,10 +256,20 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="474" y="0" width="42" height="20" uuid="7741997e-f28a-4d0c-8c4c-ab757a3f7096"/>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="121" splitType="Stretch">
+			<staticText>
+				<reportElement x="461" y="17" width="83" height="20" uuid="31495cf9-4749-437a-bbce-05ef08d7f48f"/>
+				<text><![CDATA[(Nama Lengkap)]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

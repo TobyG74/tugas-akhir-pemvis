@@ -330,11 +330,11 @@ public class ReportSalesGoods extends javax.swing.JPanel {
     private void exportPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportPDFButtonActionPerformed
         try {
             String namaFile = "src/com/tugas/application/report/file/penjualan.jrxml";
+            String namaFileCompile = "src/com/tugas/application/report/file/penjualan.jasper";
             try (Connection conn = Connector.getConnection()) {
                 HashMap parameter = new HashMap();
-                JasperReport jasperReport = JasperCompileManager.compileReport(namaFile);
-//                JasperReport jasperReport = (JasperReport) JRLoader.loadObject(new File(report_file.getPath()));
-                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
+                JasperCompileManager.compileReportToFile(namaFile, namaFileCompile);
+                JasperPrint jasperPrint = JasperFillManager.fillReport(namaFileCompile, parameter, conn);
                 JasperViewer.viewReport(jasperPrint, false);
                 JasperViewer.setDefaultLookAndFeelDecorated(true);
             } catch (Exception e) {

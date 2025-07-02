@@ -20,23 +20,30 @@
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="159" y="0" width="326" height="27" uuid="b85d8027-07da-4146-9331-5a3f07a705ff"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[PT. CAHAYA ERLANGGA MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="27" width="221" height="27" uuid="76b69e9d-4f3b-495d-ad5b-68cb01460434"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[LAPORAN BARANG KELUAR]]></text>
+			</staticText>
 			<image>
-				<reportElement x="0" y="2" width="84" height="77" uuid="a4c36379-cd36-45b0-b353-d671daaf3864"/>
+				<reportElement x="0" y="2" width="84" height="77" uuid="918963b4-afb2-4350-82fb-b77332a5d86c"/>
 				<imageExpression><![CDATA["C:\\Users\\tobis\\Downloads\\Logo_pv[1].png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="117" y="19" width="319" height="45" uuid="3f3ed2d5-ece3-4832-a3ca-3f42d8707dfa"/>
+				<reportElement x="262" y="49" width="108" height="27" uuid="d413cd1f-3cb4-47ab-a4e4-1422a8107100"/>
 				<textElement>
-					<font size="24"/>
+					<font size="14"/>
 				</textElement>
-				<text><![CDATA[LAPORAN STOK BARANG]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="222" y="59" width="100" height="20" uuid="dfa29571-1db3-4d22-9c31-42c633f1faac"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Jl. Jalan]]></text>
+				<text><![CDATA[Jl. Raya Depok]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -123,7 +130,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="42" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="25" y="0" width="86" height="20" uuid="32137b41-b2ab-46dd-ab86-9be7dbaa0c88"/>
 				<box>
@@ -196,7 +203,16 @@
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="471" y="0" width="42" height="20" uuid="7b891161-3a00-4e5c-8929-f8bc57a61429"/>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="64" width="83" height="20" uuid="1a047b4e-feff-40df-98e9-7be2fa8b6d3b"/>
+				<text><![CDATA[(Nama Lengkap)]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
