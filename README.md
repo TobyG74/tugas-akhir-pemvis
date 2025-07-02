@@ -365,8 +365,8 @@ Project ini menggunakan lisensi sesuai dengan ketentuan tugas akhir pemrograman 
 
 Untuk pertanyaan atau dukungan teknis, silakan hubungi:
 
--   Email: [contact-email]
--   GitHub Issues: [repository-issues-url]
+-   Email: tobisaputra11@gmail.com
+-   GitHub Issues: [repository-issues-url](https://github.com/TobyG74/tugas-akhir-pemvis/issues)
 
 ## 🔄 Version History
 
@@ -375,5 +375,3 @@ Untuk pertanyaan atau dukungan teknis, silakan hubungi:
 -   **v1.2.0**: UI improvements dan optimisasi
 
 ---
-
-**Dibuat dengan ❤️ menggunakan Java Swing dan MySQL**
