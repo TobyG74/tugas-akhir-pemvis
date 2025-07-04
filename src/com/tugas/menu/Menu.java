@@ -171,10 +171,8 @@ public class Menu extends JPanel {
     }
 
     public void refreshMenu() {
-        // Clear existing menu items
         panelMenu.removeAll();
 
-        // Update header and role information
         headerName = RoleManager.getFullnameFromFile();
         roleName = RoleManager.getRoleFromFile();
 
@@ -183,10 +181,8 @@ public class Menu extends JPanel {
             role.setText(roleName);
         }
 
-        // Recreate menu based on new role
         createMenu();
 
-        // Refresh the panel
         panelMenu.revalidate();
         panelMenu.repaint();
         revalidate();

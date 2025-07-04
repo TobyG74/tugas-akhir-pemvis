@@ -21,6 +21,7 @@
 -   [⚙️ Setup dan Instalasi](#️-setup-dan-instalasi)
     -   [Prerequisites](#prerequisites)
     -   [Langkah Instalasi](#langkah-instalasi)
+    -   [Langkah Instalasi Plugin NetBeans](#langkah-instalasi-plugin-netbeans)
 -   [🗄️ Struktur Database](#️-struktur-database)
     -   [Tabel Utama](#tabel-utama)
     -   [Relasi Database](#relasi-database)
@@ -165,6 +166,14 @@ tugas-pemvis/
 5. **Run Application**
     - Build project (F11)
     - Run main class `Application.java`
+
+### Langkah Instalasi Plugin NetBeans
+
+1. **Buka NetBeans IDE**
+2. **Buka Menu Tools > Plugins**
+3. **Pilih Tab Downloaded**
+4. **Klik Add Plugins**
+5. **Pilih file plugin yang ada di folder `plugin`**
 
 ## 🗄️ Struktur Database
 
