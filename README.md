@@ -7,14 +7,14 @@
 
 ## Anggota Kelompok
 
-1. Endriyan Ramadhan - 202243502595
-2. Azizan Ramadhan - 202243502583
-3. Ridho Alfiansyah Yuharian - 202243502644
-4. Satrio Baskoro - 202243502589
-5. Tobi Saputra - 202243502612
-6. Fachri Akbar - 202243502587
-7. Ishafakhri Akbar - 202243502587
-8. Muhammad Zulfahmi - 202243502609
+1. Endriyan Ramadhan - 2595
+2. Azizan Ramadhan - 2583
+3. Ridho Alfiansyah Yuharian - 2644
+4. Satrio Baskoro - 2589
+5. Tobi Saputra - 2612
+6. Fachri Akbar - 2642
+7. Ishafakhri Akbar - 2587
+8. Muhammad Zulfahmi - 2609
 
 ## 📑 Daftar Isi
 
