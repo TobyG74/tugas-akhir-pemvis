@@ -26,53 +26,53 @@ import com.tugas.menu.mode.ToolBarAccentColor;
 public class Menu extends JPanel {
 
     private final String menuItemsAdmin[][] = {
-        {"~Menu Utama~"},
-        {"Beranda"},
-        {"~Menu Form~"},
-        {"Barang"},
-        {"Kategori"},
-        {"Pemasok"},
-        {"Pelanggan"},
-        {"Gudang"},
-        {"Karyawan"},
-        {"~Menu Laporan~"},
-        {"Barang Masuk"},
-        {"Barang Keluar"},
-        {"Penjualan"},
-        {"Stok"},
-        {"~Menu Pengguna~"},
-        {"Ganti Password"},
-        {"Logout"}
+            { "~Menu Utama~" },
+            { "Beranda" },
+            { "~Menu Form~" },
+            { "Barang" },
+            { "Kategori" },
+            { "Pemasok" },
+            { "Pelanggan" },
+            { "Gudang" },
+            { "Karyawan" },
+            { "~Menu Laporan~" },
+            { "Barang Masuk" },
+            { "Barang Keluar" },
+            { "Penjualan" },
+            { "Stok" },
+            { "~Menu Pengguna~" },
+            { "Ganti Password" },
+            { "Logout" }
     };
-    
+
     private final String menuItemsKepalaGudang[][] = {
-        {"~Menu Utama~"},
-        {"Beranda"},
-        {"~Menu Form~"},
-        {"Barang"},
-        {"Kategori"},
-        {"Gudang"},
-        {"~Menu Laporan~"},
-        {"Barang Masuk"},
-        {"Barang Keluar"},
-        {"Penjualan"},
-        {"Stok"},
-        {"~Menu Pengguna~"},
-        {"Ganti Password"},
-        {"Logout"}
+            { "~Menu Utama~" },
+            { "Beranda" },
+            { "~Menu Form~" },
+            { "Barang" },
+            { "Kategori" },
+            { "Gudang" },
+            { "~Menu Laporan~" },
+            { "Barang Masuk" },
+            { "Barang Keluar" },
+            { "Penjualan" },
+            { "Stok" },
+            { "~Menu Pengguna~" },
+            { "Ganti Password" },
+            { "Logout" }
     };
-    
+
     private final String menuItemsManager[][] = {
-        {"~Menu Utama~"},
-        {"Beranda"},
-        {"~Menu Laporan~"},
-        {"Barang Masuk"},
-        {"Barang Keluar"},
-        {"Penjualan"},
-        {"Stok"},
-        {"~Menu Pengguna~"},
-        {"Ganti Password"},
-        {"Logout"}
+            { "~Menu Utama~" },
+            { "Beranda" },
+            { "~Menu Laporan~" },
+            { "Barang Masuk" },
+            { "Barang Keluar" },
+            { "Penjualan" },
+            { "Stok" },
+            { "~Menu Pengguna~" },
+            { "Ganti Password" },
+            { "Logout" }
     };
 
     public boolean isMenuFull() {
@@ -121,7 +121,7 @@ public class Menu extends JPanel {
     private void init() {
         headerName = RoleManager.getFullnameFromFile();
         roleName = RoleManager.getRoleFromFile();
-        
+
         setLayout(new MenuLayout());
         putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:20,2,2,2;"
@@ -141,8 +141,7 @@ public class Menu extends JPanel {
                 + "font:$Menu.role.font;"
                 + "foreground:$Menu.foreground");
 
-        
-        //  Menu
+        // Menu
         scroll = new JScrollPane();
         panelMenu = new JPanel(new MenuItemLayout(this));
         panelMenu.putClientProperty(FlatClientProperties.STYLE, ""
@@ -169,6 +168,29 @@ public class Menu extends JPanel {
         add(scroll);
         add(lightDarkMode);
         add(toolBarAccentColor);
+    }
+
+    public void refreshMenu() {
+        // Clear existing menu items
+        panelMenu.removeAll();
+
+        // Update header and role information
+        headerName = RoleManager.getFullnameFromFile();
+        roleName = RoleManager.getRoleFromFile();
+
+        if (menuFull) {
+            header.setText(headerName);
+            role.setText(roleName);
+        }
+
+        // Recreate menu based on new role
+        createMenu();
+
+        // Refresh the panel
+        panelMenu.revalidate();
+        panelMenu.repaint();
+        revalidate();
+        repaint();
     }
 
     private void createMenu() {
@@ -211,7 +233,7 @@ public class Menu extends JPanel {
                 break;
             }
         }
-        
+
     }
 
     private JLabel createTitle(String title) {
@@ -333,7 +355,7 @@ public class Menu extends JPanel {
                 int hgap = menuFull ? sheaderFullHgap : 0;
                 int accentColorHeight = 0;
                 if (toolBarAccentColor.isVisible()) {
-                    accentColorHeight = toolBarAccentColor.getPreferredSize().height+gap;
+                    accentColorHeight = toolBarAccentColor.getPreferredSize().height + gap;
                 }
 
                 header.setBounds(x + hgap, y, iconWidth - (hgap * 2), headerHeight);
@@ -342,7 +364,7 @@ public class Menu extends JPanel {
                 int ldWidth = width - ldgap * 2;
                 int ldHeight = lightDarkMode.getPreferredSize().height;
                 int ldx = x + ldgap;
-                int ldy = y + height - ldHeight - ldgap  - accentColorHeight;
+                int ldy = y + height - ldHeight - ldgap - accentColorHeight;
 
                 int menux = x;
                 int menuy = y + headerTotalHeight + gap;

@@ -78,7 +78,8 @@ public class MainForm extends JLayeredPane {
 
     private void initMenuEvent() {
         menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
-            // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
+            // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " +
+            // subIndex));
             switch (RoleManager.getRoleFromFile()) {
                 case "Admin": {
                     if (index == 0 && subIndex == 0) {
@@ -104,7 +105,7 @@ public class MainForm extends JLayeredPane {
                     } else if (index == 10 && subIndex == 0) {
                         Application.showForm(new ReportStockGoods());
                     } else if (index == 11 && subIndex == 0) {
-//                        Application.showForm(new FormCategory());
+                        // Application.showForm(new FormCategory());
                     } else if (index == 12 && subIndex == 0) {
                         Application.logout();
                     }
@@ -177,6 +178,10 @@ public class MainForm extends JLayeredPane {
 
     public void setSelectedMenu(int index, int subIndex) {
         menu.setSelectedMenu(index, subIndex);
+    }
+
+    public void refreshMenu() {
+        menu.refreshMenu();
     }
 
     private Menu menu;
