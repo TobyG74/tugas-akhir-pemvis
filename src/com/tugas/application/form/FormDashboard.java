@@ -42,10 +42,6 @@ public class FormDashboard extends javax.swing.JPanel {
             e.printStackTrace();
             Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Terjadi Kesalahan Saat Mencoba Mengupdate Data Tabel!");
         }
-
-        card1.setData(new ModelCard(null, null, null, "$ 500.00", "Report Income Monthly"));
-        card2.setData(new ModelCard(null, null, null, "$ 800.00", "Report Expense Monthly"));
-        card3.setData(new ModelCard(null, null, null, "$ 300.00", "Report Profit Monthly"));
         
         card1.putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
         card2.putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
@@ -167,7 +163,7 @@ public class FormDashboard extends javax.swing.JPanel {
 
         card2.setColor1(new java.awt.Color(95, 211, 226));
         card2.setColor2(new java.awt.Color(26, 166, 170));
-        card2.setDescription("Pendapatan Bulanan");
+        card2.setDescription("Total Penjualan");
         card2.setIcon(com.tugas.utils.iconfont.GoogleMaterialDesignIcon.PIE_CHART);
         card2.setValues("Rp100.000");
 

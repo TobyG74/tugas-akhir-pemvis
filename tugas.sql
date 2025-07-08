@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2025 at 09:47 AM
+-- Generation Time: Jul 08, 2025 at 12:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -141,7 +141,8 @@ CREATE TABLE `kategori` (
 INSERT INTO `kategori` (`id_kategori`, `kode_kategori`, `nama_kategori`, `deskripsi`, `created_at`, `updated_at`) VALUES
 (1, 'KG001', 'Sparepart', 'Komponen kendaraan bermotor', '2025-06-16 11:40:18', '2025-06-24 07:46:38'),
 (2, 'KG002', 'Aksesoris', 'Perlengkapan tambahan untuk kendaraan', '2025-06-16 11:40:18', '2025-06-24 07:46:47'),
-(3, 'KG003', 'Motor', 'Unit kendaraan bermotor lengkap', '2025-06-16 11:40:18', '2025-06-24 07:46:58');
+(3, 'KG003', 'Motor', 'Unit kendaraan bermotor lengkap', '2025-06-16 11:40:18', '2025-06-24 07:46:58'),
+(5, 'KG004', 'Mobil', 'Unit kendaraan roda empat', '2025-07-08 10:01:30', '2025-07-08 10:01:30');
 
 -- --------------------------------------------------------
 
@@ -326,7 +327,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

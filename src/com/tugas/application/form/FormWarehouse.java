@@ -400,9 +400,9 @@ public class FormWarehouse extends javax.swing.JPanel {
             if (rs.next()) {
                 sql = "UPDATE gudang SET nama_gudang=?, id_kepala_gudang=?, lokasi=? WHERE id_gudang=?";
                 PreparedStatement updatePs = conn.prepareStatement(sql);
-                updatePs.setString(1, inputNamaGudang.getText().isEmpty() ? rs.getString("nama_barang") : inputNamaGudang.getText());
-                updatePs.setString(2, inputIdKepalaGudang.getText().isEmpty() ? rs.getString("id_kategori") : inputIdKepalaGudang.getText());
-                updatePs.setString(3, inputLokasiGudang.getText().isEmpty() ? rs.getString("harga_beli") : inputLokasiGudang.getText());
+                updatePs.setString(1, inputNamaGudang.getText().isEmpty() ? rs.getString("nama_gudang ") : inputNamaGudang.getText());
+                updatePs.setString(2, inputIdKepalaGudang.getText().isEmpty() ? rs.getString("id_kepala_gudang") : inputIdKepalaGudang.getText());
+                updatePs.setString(3, inputLokasiGudang.getText().isEmpty() ? rs.getString("lokasi") : inputLokasiGudang.getText());
                 updatePs.setString(4, inputIdGudang.getText().toUpperCase()); // Primary Key
                 updatePs.executeUpdate();
                 loadDataTable();
@@ -515,7 +515,7 @@ public class FormWarehouse extends javax.swing.JPanel {
         }
 
         String sqlCheck = "SELECT * FROM gudang WHERE id_gudang=?";
-        String sqlInsert = "INSERT INTO barang (id_gudang, nama_gudang, id_kepala_gudang, lokasi) VALUES (?, ?, ?, ?)";
+        String sqlInsert = "INSERT INTO gudang (id_gudang, nama_gudang, id_kepala_gudang, lokasi) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = Connector.getConnection(); PreparedStatement psCheck = conn.prepareStatement(sqlCheck)) {
             psCheck.setString(1, inputIdGudang.getText());
