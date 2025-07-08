@@ -198,6 +198,7 @@ tugas-pemvis/
 -   `users` - Data pengguna sistem
 -   `barang_masuk` - Transaksi barang masuk
 -   `barang_keluar` - Transaksi barang keluar
+-   `penjualan` - Transaksi penjualan
 
 ### Relasi Database
 
