@@ -5,6 +5,17 @@
 ![MySQL](https://img.shields.io/badge/Database-MySQL-blue)
 ![NetBeans](https://img.shields.io/badge/IDE-NetBeans-green)
 
+## Anggota Kelompok
+
+1. Endriyan Ramadhan - 2595
+2. Azizan Ramadhan - 2583
+3. Ridho Alfiansyah Yuharian - 2644
+4. Satrio Baskoro - 2589
+5. Tobi Saputra - 2612
+6. Fachri Akbar - 2642
+7. Ishafakhri Akbar - 2587
+8. Muhammad Zulfahmi - 2609
+
 ## 📑 Daftar Isi
 
 -   [📋 Deskripsi Project](#-deskripsi-project)
