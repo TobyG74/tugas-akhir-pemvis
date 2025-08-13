@@ -41,17 +41,6 @@
     -   [Login System](#login-system)
     -   [Navigasi Menu](#navigasi-menu)
     -   [Form Management](#form-management)
--   [📊 Fitur Laporan](#-fitur-laporan)
-    -   [Export Capabilities](#export-capabilities)
-    -   [Jenis Laporan](#jenis-laporan)
--   [🎨 Customization](#-customization)
-    -   [Theme Configuration](#theme-configuration)
-    -   [Custom Components](#custom-components)
--   [🔧 Maintenance dan Development](#-maintenance-dan-development)
-    -   [Code Structure](#code-structure)
-    -   [Best Practices](#best-practices)
--   [🐛 Troubleshooting](#-troubleshooting)
-    -   [Common Issues](#common-issues)
 -   [👥 Special Credits](#-special-credits)
 
 ## 📋 Deskripsi Project
@@ -301,79 +290,6 @@ private void saveButtonActionPerformed(ActionEvent evt) {
 }
 ```
 
-## 📊 Fitur Laporan
-
-### Export Capabilities
-
--   **PDF Export**: Menggunakan iText library
--   **Excel Export**: Format spreadsheet
--   **Print Preview**: Preview sebelum print
-
-### Jenis Laporan
-
--   Laporan Stok Real-time
--   Laporan Barang Masuk/Keluar
--   Laporan Penjualan Periodic
--   Laporan Inventory Analysis
-
-## 🎨 Customization
-
-### Theme Configuration
-
-```java
-// Setup FlatLaf theme
-FlatMacDarkLaf.setup();
-UIManager.setLookAndFeel(new FlatMacDarkLaf());
-
-// Custom styling
-component.putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
-```
-
-### Custom Components
-
-Project menggunakan komponen custom seperti:
-
--   `RoundPanel`: Panel dengan rounded corners
--   Custom buttons dengan styling
--   Toast notifications untuk feedback
-
-## 🔧 Maintenance dan Development
-
-### Code Structure
-
--   **MVC Pattern**: Separation of concerns
--   **Database Layer**: Centralized in `Connector.java`
--   **UI Components**: Modular design
--   **Error Handling**: Comprehensive exception handling
-
-### Best Practices
-
--   Input validation pada setiap form
--   Transaction management untuk database operations
--   Resource cleanup (Connection, PreparedStatement, ResultSet)
--   User feedback melalui notifications
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Database Connection Error**
-
-    - Periksa konfigurasi `.env` file
-    - Pastikan MySQL service running
-    - Verify credentials dan database name
-
-2. **UI Not Loading Properly**
-
-    - Pastikan FlatLaf library ter-load
-    - Check Java version compatibility
-    - Verify all resources available
-
-3. **Memory Issues**
-    - Increase JVM heap size
-    - Implement proper resource cleanup
-    - Optimize database queries
-
 ## 📄 License
 
 Project ini menggunakan lisensi sesuai dengan ketentuan tugas akhir pemrograman visual.
@@ -387,12 +303,5 @@ Project ini menggunakan lisensi sesuai dengan ketentuan tugas akhir pemrograman 
 Untuk pertanyaan atau dukungan teknis, silakan hubungi:
 
 -   Email: tobisaputra11@gmail.com
--   GitHub Issues: [repository-issues-url](https://github.com/TobyG74/tugas-akhir-pemvis/issues)
-
-## 🔄 Version History
-
--   **v1.0.0**: Initial release dengan fitur dasar CRUD
--   **v1.1.0**: Penambahan sistem laporan
--   **v1.2.0**: UI improvements dan optimisasi
-
+-   GitHub Issues: [Issues](https://github.com/TobyG74/tugas-akhir-pemvis/issues)
 ---
